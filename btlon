@@ -1,0 +1,95 @@
+#include<stdio.h>
+#include<conio.h>
+#include<string.h>
+typedef struct {
+    char TaiKhoan[50];
+    char MatKhau[50];
+    char CMNDCCCD[50];
+    char NapTien[10000];
+    char TenMon[50];
+    char GiaTien[50];
+} hoivien;
+
+void Nhap_dshv(int *n,hoivien hv[100])
+{
+    printf("\nNhap so tai khoan hoi vien muon tao: ");
+    scanf("%d",n);
+    for(int i=0;i<*n;i++)
+    {
+        printf("\nNhap thong tin hoi vien: %d",i+1);
+        printf("\nNhap ten tai khoan: ");
+        fflush(stdin);
+        gets(hv[i].TaiKhoan);
+        printf("Nhap mat khau: ");
+        fflush(stdin);
+        gets(hv[i].MatKhau);
+        printf("Nhap CMND hoac CCCD: ");
+        scanf("%s", hv[i].CMNDCCCD);
+        fflush(stdin);
+        printf("Nhap so tien muon nap: ");
+        scanf("%s", hv[i].NapTien);
+        
+    }
+}
+
+void Xuathv(hoivien &hv)
+{
+	printf("\tTai khoan: %s\n", hv.TaiKhoan);
+	printf("\tMat khau: %s\n", hv.MatKhau);
+	printf("\tCMND,CCCD: %s\n",&hv.CMNDCCCD);
+	printf("\tSo du tai khoan: %s VND\n",&hv.NapTien);
+}
+
+void XuatDanhSachHV(hoivien DS[], int n)
+{
+	printf("\n*****************************\n");
+	for(int i=0; i<n; i++)
+	{
+		printf("\nThong tin hoi vien thu %d:\n",i+1);
+		Xuathv(DS[i]);
+	}
+}
+
+void Tim_ds(int n,hoivien hv[100])
+{
+    int i=0;
+    printf("\nTIM KIEM HOI VIEN");
+    char name[50];
+    printf("\nNhap ten tai khoan: ");
+    fflush(stdin);
+    gets(name);
+    for(i=0;i<n;i++){
+        if(strcmp(hv[i].TaiKhoan,name)==0){
+        printf("\tTai khoan: %s\n", hv[i].TaiKhoan);
+	printf("\tMat khau: %s\n", hv[i].MatKhau);
+	printf("\tCMND,CCCD: %d\n", &hv[i].CMNDCCCD);
+	printf("\tSo du tai khoan: %d VND\n", &hv[i].NapTien);
+            break; 
+        }
+    }
+    if(i==n){
+        printf("Khong tim thay");
+    }
+}
+void DichVu(int *l,dv m[100])
+{
+    printf("\nNhap so mon: ");
+    scanf("%d",l);
+    for(int i=0;i<*n;i++)
+    {
+        printf("\nNhap ten mon: ");
+        fflush(stdin);
+        gets(m[i].TenMon);
+        printf("Nhap gia tien: ");
+        fflush(stdin);
+        gets(m[i].GiaTien);    
+    }
+}
+int main()
+{
+	hoivien hv[100];
+	int n;
+    Nhap_dshv(&n,hv);
+    XuatDanhSachHV(hv,n);
+    Tim_ds(n,hv);
+}
